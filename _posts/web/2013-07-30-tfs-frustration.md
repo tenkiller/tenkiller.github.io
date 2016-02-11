@@ -3,8 +3,6 @@ layout: article
 title: Team Foundation Server Frustration
 ---
 
-# Team Foundation Server Frustration
-
 For my first post on my first blog, let's complain about a Microsoft product - Team Foundation Server 2010. 
 If you're not familiar with TFS 2010, think of it as Github. Except it's not on the cloud, and its added with 
 a lot of useful features that are needlessly complicated, especially if you have a problem with one of them. 
