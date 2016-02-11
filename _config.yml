@@ -1,7 +1,7 @@
 # Site wide configuration
 
-title:
-description:
+title: Code Attic
+description: A personal blog of my adventures and misadventures in software development.
 logo: # 120x120 px default image used for Twitter summary card
 teaser: # 400x250 px default teaser image used in image archive grid
 locale: en
@@ -37,9 +37,9 @@ titlecase: true
 
 # Site owner
 owner:
-  name:
-  email:
-  twitter:
+  name: Brett Fincher
+  email: 
+  twitter: brett_fincher
   google:
     ad-client:
     ad-slot:
