@@ -1,7 +1,6 @@
 ---
-layout: post
+layout: article
 title: Team Foundation Server Frustration
-categories: web
 ---
 
 # Team Foundation Server Frustration
