@@ -44,7 +44,7 @@ owner:
     ad-client:
     ad-slot:
   bio: "A singularly determined web developer making ambitious attempts to become better at coding."
-  avatar: bio-photo.jpg # 160x160 px image for author byline
+  avatar: bio-photo-me.jpg # 160x160 px image for author byline
   disqus-shortname:
 
 
