@@ -1,6 +1,7 @@
 ---
 layout: article
-teaser: ajax_logo_sm.png
+image:
+  teaser: ajax_logo_sm.png
 title: A Dynamic Ajax Queue
 ---
 
