@@ -1,5 +1,7 @@
 ---
 layout: article
+image:
+  teaser: html5_logo.png
 title: Improving Performance with Session Storage
 ---
 
