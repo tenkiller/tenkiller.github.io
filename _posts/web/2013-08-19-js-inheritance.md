@@ -1,5 +1,7 @@
 ---
 layout: article
+image:
+  teaser: js_inheritance.jpg
 title: Javascript Inheritance
 ---
 
