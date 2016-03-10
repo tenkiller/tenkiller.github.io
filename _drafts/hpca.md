@@ -43,9 +43,31 @@ branches occur. Only at that point will it predict taken.
 Here is a trivial example of how such a branch predictor would function in code:
 
 ```javascript
-(function() {
-  
-})();
+/*
+ * pattern {String} A pattern of branch predictions, i.e. 'NTNTTNTT' where 'N' is not-taken and 'T' is taken
+ */
+function processPattern(pattern) {
+  var steps = pattern.toUpperCase().split(''),
+      table = 'Pass\tHist\t\tPred\tActual\n${results}\n\n',
+      results = [],
+      pass = 1, hist = 0,
+      pred, outc, correct;
+      
+  for (var p = 1; p <= pass; p++) {
+    for (var i = 0; i < steps.length; i++) {
+      // make the prediction, capture the outcome, and see if the prediction is correct
+      pred = (hist) ? 'T' : 'N';
+      outc = steps[i];
+      correct = (pred === outc);
+      // push the prediction results into our output array
+      results.push([p, hist, pred, outc, correct].join('\t\t'));
+      // update the history
+      hist = (outc === 'T');
+    }
+    
+    return table.replace(/\${results}/, results.join('\n'));
+  }
+}
 ``` 
 
 ## Dynamic Scheduling
