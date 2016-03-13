@@ -1,6 +1,6 @@
 ---
 layout: article
-title: High Performance Computer Architecture
+title: Branch Instruction Prediction
 ---
 
 I enrolled in the Masters program at the Georgia Institute of Technonlogy (Georgia Tech) back in 
@@ -62,21 +62,18 @@ function processPattern(pattern) {
       // push the prediction results into our output array
       results.push([p, hist, pred, outc, correct].join('\t\t'));
       // update the history
-      hist = (outc === 'T');
+      hist = (outc === 'T') ? 1 : 0;
     }
     
     return table.replace(/\${results}/, results.join('\n'));
   }
 }
 ``` 
+The above code implements a simple 1-bit counter. It performs great if the branch behavior is always taken or always 
+not-taken. It's very efficient for loops. Any other type of pattern, and this predictor fails miserably. So, the plan, 
+as mentioned before, is to implement additional types of predictors which perform better at predicting more random 
+types of behavior. The general rule is if you have a pattern that repeats every *n*th time, then you need a predictor
+with at least an _n_+1 history. The user will have a choice of which type of predictor to use and compare results.
 
-## Dynamic Scheduling
-
-The problem here is to implement [Tomasulo's algorithm](https://en.wikipedia.org/wiki/Tomasulo_algorithm) 
-with a reorder buffer.
-
-## Processor Caches
-
-With processor caches, the process I'd like to emulate is the usage of an L1 cache for processor 
-instructions that reports hits and misses, sets valid and dirty bits, tags cache lines, and reads or 
-writes data.
+This ends part one of this blog. I'll return to it to detail how I plan to tackle dynamic sheduling. Unitl then, 
+thanks for reading.
