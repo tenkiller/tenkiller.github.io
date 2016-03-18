@@ -1,6 +1,8 @@
 ---
 layout: article
 title: Branch Instruction Prediction
+image:
+  teaser: branches.gif
 ---
 
 I enrolled in the Masters program at the Georgia Institute of Technonlogy (Georgia Tech) back in 
