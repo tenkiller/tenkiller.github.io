@@ -22,6 +22,7 @@ wells up in me. There were a few ideas I had which I thought would make good exe
 interesting and not trivial to implement. These ideas include: 
 
 - Branch prediction
+- Processor pipelines
 - Dynamic instruction scheduling
 - Processor caches
 
@@ -70,10 +71,12 @@ function processPattern(pattern) {
 }
 ``` 
 The above code implements a simple 1-bit counter. It performs great if the branch behavior is always taken or always 
-not-taken. It's very efficient for loops. Any other type of pattern, and this predictor fails miserably. So, the plan, 
-as mentioned before, is to implement additional types of predictors which perform better at predicting more random 
-types of behavior. The general rule is if you have a pattern that repeats every *n*th time, then you need a predictor
-with at least an _n_+1 history. The user will have a choice of which type of predictor to use and compare results.
+not-taken. It's very efficient for loops. Any other type of pattern, and this predictor fails miserably. 
 
-This ends part one of this blog. I'll return to it to detail how I plan to tackle dynamic sheduling. Unitl then, 
-thanks for reading.
+So, the plan, as mentioned before, is to implement additional types of predictors which perform better at predicting 
+more random types of behavior. The general rule is if you have a pattern that repeats every *n*th time, then you need 
+a predictor with at least an _n_+1 history. The user will have a choice of which type of predictor to use and compare 
+results.
+
+This ends part one of this blog. I'll return to it to detail how I plan to tackle processor pipelines. Unitl then, 
+thanks for reading!
