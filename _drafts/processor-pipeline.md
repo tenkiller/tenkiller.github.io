@@ -30,7 +30,8 @@ this problem and implement a simple solution, its complexity soon became apparen
     this.opcode = parts[0];
     this.operands = parts[1].split(',');
     
-    this.log.push('DECODED instruction into opcode "' + this.opcode + '" and operands "[' + this.operands.join(',') + ']"');
+    this.log.push('DECODED instruction into opcode "' + this.opcode + 
+                  '" and operands "[' + this.operands.join(',') + ']"');
   };
   
   Pipeline.prototype.execute = function() {
