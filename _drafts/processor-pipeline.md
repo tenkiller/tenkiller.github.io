@@ -50,7 +50,7 @@ this problem and implement a simple solution, its complexity soon became apparen
   
   Pipeline.prototype.write = function() {
     // write results to registers
-    this.log.push('WRITE performed to "' + this.operands[0] + '" for "' + this.opcode + '" instruction');
+    this.log.push('WRITE performed to "[' + this.operands[0] + ']" for "' + this.instruction + '"');
   };
   
   Piepline.prototype.run = function() {
@@ -71,5 +71,3 @@ this problem and implement a simple solution, its complexity soon became apparen
   pipeline.run();
 })();
 ```
-
-## Processor Pipelines
