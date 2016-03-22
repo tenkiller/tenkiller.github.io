@@ -3,9 +3,12 @@ layout: article
 title: A Processor Pipeline
 ---
 
+> Like I said before, this exercise is simply a means to gain a deeper understanding into how these things function.
+
 Processor pipelines are complicated. In-order processors that aren't truely pipelined are simple to implement, but, I'm talking about
-processors that fetch, decode, and execute instructions, access memory, and write to registers *in parallel*. As I began to think about
-this problem and implement a simple solution, its complexity soon became apparent. Let me show you a trivial example of what I was attempting to do in JavaScript.
+processors that fetch, decode, and execute instructions, access memory, and write to registers *in parallel*. As I began to think about this problem and implement a simple solution, its complexity soon became apparent. Let me show you a trivial example of what I was attempting to do.
+
+### The Trivial Example
 
 ```javascript
 (function() {
@@ -71,3 +74,14 @@ this problem and implement a simple solution, its complexity soon became apparen
   pipeline.run();
 })();
 ```
+
+Even though this implementation works, there are obvious problems. First, it does not execute instructions in parallel. An instruction is fetched and processed through the pipeline completely before the next instruction is fetched. What needs to happen is that an
+instruction is fetched on every iteration (cycle). Secondly, there are no checks for dependencies between instructions. So, if an
+instruction depends on the outcome of a previous instruction, it won't wait to execute.
+
+One way to solve the first problem is to implement the functions of the pipeline as promises. This way we can just "fire and forget"
+each step; however, there will be no synchronicity between operations. I can live with that, because I'm not actually trying to 
+implement a full-featured simulation of a processor pipeline. Like I said before, this exercise is simply a means to gain a deeper
+understanding into how these things function.
+
+### A Better Implementation (But Still Flawed)
