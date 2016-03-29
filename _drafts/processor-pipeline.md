@@ -3,7 +3,7 @@ layout: article
 title: A Processor Pipeline
 ---
 
-> Like I said before, this exercise is simply a means to gain a deeper understanding into how these things function.
+> This exercise is simply a means to gain a deeper understanding into how these things function.
 
 Processor pipelines are complicated. In-order processors that aren't truely pipelined are simple to implement, but, I'm talking about
 processors that fetch, decode, and execute instructions, access memory, and write to registers *in parallel*. As I began to think about this problem and implement a simple solution, its complexity soon became apparent. Let me show you a trivial example of what I was attempting to do.
@@ -79,9 +79,11 @@ Even though this implementation works, there are obvious problems. First, it doe
 instruction is fetched on every iteration (cycle). Secondly, there are no checks for dependencies between instructions. So, if an
 instruction depends on the outcome of a previous instruction, it won't wait to execute.
 
-One way to solve the first problem is to implement the functions of the pipeline as promises. This way we can just "fire and forget"
-each step; however, there will be no synchronicity between operations. I can live with that, because I'm not actually trying to 
-implement a full-featured simulation of a processor pipeline. Like I said before, this exercise is simply a means to gain a deeper
-understanding into how these things function.
+A naive way to solve the first problem is to implement the functions of the pipeline as promises. This way we can just "fire and 
+forget" each step. However, that isn't parallel programming. These operations are still synchronous. We need to be able to execute
+each function on the same cycle. I sort of have to live with this limitation, given my chosen language. But that's ok. Like I said
+before, this exercise is simply a means to gain a deeper understanding into how these things function. To solve the second problem, a 
+smart choice is to implement dynamic instruction scheduling, &aacute; la [Tomasulo's 
+algorithm](https://en.wikipedia.org/wiki/Tomasulo_algorithm). That's a topic for a future post.
 
 ### A Better Implementation (But Still Flawed)
