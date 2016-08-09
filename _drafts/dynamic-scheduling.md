@@ -34,10 +34,22 @@ and operands. The opcode will tell us the type of instruction being performed an
 execution. Next, we look to see if we have a free reservation station slot and a free reorder buffer slot. It's 
 important to note that _both_ need to have a free slot, not one or the other. If both slots are free, we may continue. 
 
-Adding the instruction to the RS and ROB is a simple procedure. Specifically, the instruction is added to the ROB first,
-then the RS. While adding it to the ROB, we take note of where the result of the instruction is going to be stored in 
-the ARF. __TODO__
+Adding the instruction to the RS and ROB is a simple procedure. First, the instruction opcode and destination register 
+in the ARF are written to the ROB. Second, the instruction opcode and ROB entry we just filled in are written to the RS. 
+Additionally, the instruction operands are referenced in the RAT, and their values are written to the RS. It's important 
+to note that each entry in the RAT corresponds to a single register in the ARF. If the RAT entry is empty, then it 
+returns the value of its corresponding ARF register. Finally, the entry in the RAT that corresponds to the destination 
+register of the instruction is written with the value of the ROB entry we wrote to previously. This way, any future 
+instruction that refers to this current instruction's destination register will lookup the value in the ROB entry, not 
+the ARF.
 
-After the instruction is added to the RS and ROB, we make a check to see if it can be executed this cycle. In order to 
-execute an instruction during the current cycle, it must have values for each of its operands. If an operand is still 
-waiting on the return value from a previous instruction, the current instruction cannot execute. 
+After the instruction is added to the RS and ROB, and an update to the RAT has been made, we make a check to see if it 
+can be executed this cycle. In order to execute an instruction during the current cycle, it must have values for each of 
+its operands. In other words, if an operand is still waiting on the return value from a previous instruction (i.e. it 
+still points to a ROB entry), then the current instruction cannot execute. Once its operands contain a value, and it 
+begins execution, it may then be dispatched to the executuon units over the CDB and freed from the RS. After execution 
+of the instruction completes, the return value is written to the ROB entry and the ROB entry is marked as done. Entries 
+in the ROB only get freed if it is marked as done and the ROB commit pointer is pointing to it in the current cycle. The 
+commit pointer basically walks through each ROB entry, one at a time, _in order_, and writes their value to the 
+destination register in the ARF that the ROB entry points to. This entire process cycle repeats until all of the 
+instructions have been executed.
