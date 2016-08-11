@@ -3,7 +3,7 @@ layout: article
 title: Dynamic Instruction Scheduling
 ---
 
-## Dynamic Scheduling
+## Dynamic Instruction Scheduling
 
 During my high-performance computer architecture class at [Georgia Tech](http://omscs.gatech.edu), we discussed data 
 hazards, such as, read-after-write. This particular hazard refers to the situation when an instruction refers to a 
@@ -22,12 +22,13 @@ we must take measures to ensure the program performs as intended.
 Register renaming is a simple way to solve this problem, and 
 [Tomasulo's algorithm](https://en.wikipedia.org/wiki/Tomasulo_algorithm) is the elegant way to do it. Its power is in 
 its simplicity. All that's required are a few data structures built into hardware. These are the instruction queue (IQ), 
-architectural register file (ARF), register alias table (RAT), reservation station (RS), reorder buffer (ROB), and 
-common data bus (CDB). See the figure below for a logical view of how these pieces fit together. In fact, you can 
-implement Tomasulo's algorithm without a [reorder buffer](https://en.wikipedia.org/wiki/Re-order_buffer), but you won't 
-be able to handle program exceptions or rollback control to a target instruction due to a branch misprediction.
+architectural register file (ARF), register alias table (RAT), reservation station (RS), reorder buffer (ROB), load 
+store queue (LSQ), and common data bus (CDB). See the figure below for a logical view of how these pieces fit together. 
+In fact, you can implement Tomasulo's algorithm without a 
+[reorder buffer](https://en.wikipedia.org/wiki/Re-order_buffer), but you won't be able to handle program exceptions or 
+rollback control to a target instruction due to a branch misprediction.
 
-[logical view image placeholder]
+![An example processor architecture][1]
 
 Let's explore how the entire process should work. We first fetch an instruction from the IQ and parse it into its opcode 
 and operands. The opcode will tell us the type of instruction being performed and how long it will take to complete 
@@ -43,6 +44,10 @@ register of the instruction is written with the value of the ROB entry we wrote 
 instruction that refers to this current instruction's destination register will lookup the value in the ROB entry, not 
 the ARF.
 
+![Completion of the first cycle][2]
+
+![Completion of the second cycle][3]
+
 After the instruction is added to the RS and ROB, and an update to the RAT has been made, we make a check to see if it 
 can be executed this cycle. In order to execute an instruction during the current cycle, it must have values for each of 
 its operands. In other words, if an operand is still waiting on the return value from a previous instruction (i.e. it 
@@ -53,3 +58,7 @@ in the ROB only get freed if it is marked as done and the ROB commit pointer is 
 commit pointer basically walks through each ROB entry, one at a time, _in order_, and writes their value to the 
 destination register in the ARF that the ROB entry points to. This entire process cycle repeats until all of the 
 instructions have been executed.
+
+[1]: images/hpca1.png
+[2]: images/hpca2.png
+[3]: images/hpca3.png
