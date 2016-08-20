@@ -113,7 +113,7 @@ Operation | Time
 Peek | O(_1_)
 Enqueue | O(_1_)
 Dequeue | O(_1_)
- 
+
 __Binary Search Tree (BST)__
 
 A binary search tree is a rooted binary tree whose internal nodes each store a key and links to two distinguished 
