@@ -5,8 +5,6 @@ image:
 title: Data Structures and Algorithms
 ---
 
-## Data Structures and Algorithms
-
 > I don't know about you, but data structures and algorithms are cool! 
 
 Breaking complex problems down into simple, logical pieces is a fascinating process. It's one you get good at with 
@@ -19,7 +17,7 @@ to take notes, well, you're in luck. Since I'm such a nerd, I took notes for you
 from WikiPedia, but collating all that into one place is better than clicking through multiple pages. Here it's all in 
 one place.
 
-Disclaimer: I do not attest or guarantee that all the information listed here is 100% accurate. Use this as a spring 
+__Disclaimer__: I do not attest or guarantee that all the information listed here is 100% accurate. Use this as a spring 
 board and go learn more about algorithms and data structures. Try to implement them yourself. It really is fun!
 
 __Merge Sort__
@@ -64,14 +62,14 @@ then the value of node A is ordered with respect to the value of node B, with th
 heap. It is usually placed in an array with the layout of a complete binary tree. Each array index represents a node; 
 the indices of the node’s parent, left child branch, or right child branch are simple expressions
 
-Common operations:
-
--	Heapify, O(_n_)
--	Sift-up, O(_n log n_)
--	Sift-down, O(_n log n_)
--	Peek, O(_1_)
--	Push, O(_n log n_)
--	Pop, O(_n log n_)
+Operation | Time
+--- | ---
+Heapify | O(_n_)
+Sift-up | O(_n log n_)
+Sift-down | O(_n log n_)
+Peek | O(_1_)
+Push | O(_n log n_)
+Pop | O(_n log n_)
 
  
 __Linked List__
@@ -81,16 +79,16 @@ A linked list is a linear collection of data elements, called nodes, pointing to
 inserted or removed without reallocation or reorganization of the entire structure. Linked lists allow insertion and 
 removal of nodes at any point in the list. However, they do not allow random access or indexing.
 
-Common operations:
-
--	Add-first, O(_1_)
--	Add-after, O(_1_)
--	Add-before, O(_1_)
--	Add-last, O(_1_)
--	Find, O(_n_)
--	Remove, O(_n_)
--	Remove-first, O(_1_)
--	Remove-last, O(_1_)
+Operation | Time
+--- | ---
+Add-first | O(_1_)
+Add-after | O(_1_)
+Add-before | O(_1_)
+Add-last | O(_1_)
+Find | O(_n_)
+Remove | O(_n_)
+Remove-first | O(_1_)
+Remove-last | O(_1_)
 
 __Stack__
 
@@ -98,11 +96,11 @@ A stack is a data structure that resembles of a set of physical items stacked on
 an element is added to and removed from the stack gives rise to its alternative name, last-in, first-out (LIFO). It is 
 usually implemented as a singly linked list, with a pointer at the head.
 
-Common operations:
-
--	Peek, O(_1_)
--	Push, O(_1_)
--	Pop, O(_1_)
+Operation | Time
+--- | ---
+Peek | O(_1_)
+Push | O(_1_)
+Pop | O(_1_)
 
 __Queue__
 
@@ -110,12 +108,11 @@ A queue is a collection of elements that are kept in the order they are added. T
 structure is the first element removed; a.k.a. first-in, first-out (FIFO). It is usually implemented as a singly linked 
 list, with a pointer at the head and tail.
 
-Common operations:
-
--	Peek, O(_1_)
--	Enqueue, O(_1_)
--	Dequeue, O(_1_)
-
+Operation | Time
+--- | ---
+Peek | O(_1_)
+Enqueue | O(_1_)
+Dequeue | O(_1_)
  
 __Binary Search Tree (BST)__
 
@@ -128,15 +125,15 @@ a place to insert a new key), they traverse the tree from root to leaf, making c
 and deciding to continue searching in the left of right subtrees. On average, this means that each comparison allows the 
 operations to skip about half of the tree.
 
-Common operations:
-
--	Insert, O(_h_)
--	Remove, O(_h_)
--	Search, O(_h_)
--	Min/Max, O(_h_)
--	In-order, O(_n_)
--	Pre-order, O(_n_)
--	Post-order, O(_n_)
+Operation | Time
+--- | ---
+Insert | O(_h_)
+Remove | O(_h_)
+Search | O(_h_)
+Min/Max | O(_h_)
+In-order | O(_n_)
+Pre-order | O(_n_)
+Post-order | O(_n_)
 
 __AVL Tree__
 
@@ -152,27 +149,26 @@ ancestor. If it’s greater, do a left-rotate of the ancestor’s left child and
 -	If the key of the inserted node is greater than the current ancestor’s right child, do a left-rotation of the current 
 ancestor. If it’s less than, do a right-rotate of the ancestor’s right child and a left-rotate of the current ancestor.
 
-Common operations:
-
--	Insert, O(_log n_)
--	Remove, O(_log n_)
--	Search, O(_log n_)
--	Min/Max, O(_log n_)
--	In-order, O(_n_)
--	Pre-order, O(_n_)
--	Post-order, O(_n_)
-
+Operation | Time
+--- | ---
+Insert | O(_log n_)
+Remove | O(_log n_)
+Search | O(_log n_)
+Min/Max | O(_log n_)
+In-order | O(_n_)
+Pre-order | O(_n_)
+Post-order | O(_n_)
  
 __Rolling Hash__
 
 A rolling hash is a hash function where the input is hashed in a window that moves through the input. As the window 
 moves, the new hash is rapidly calculated given the old hash value.
 
-Common operations:
-
--	Append, O(_1_)
--	Skip, O(_1_)
--	Hash, O(_1_)
+Operation | Time
+--- | ---
+Append | O(_1_)
+Skip | O(_1_)
+Hash | O(_1_)
 
 __Hash Table__
 
@@ -182,12 +178,12 @@ will assign each key to a unique slot, but it is possible that two keys will gen
 solution to collisions is to implement slot chaining using singly linked lists or dynamic arrays. The hash table itself 
 is usually implemented as a fixed size array that grows or shrinks as necessary.
 
-Common operations:
-
--	Add, O(_1_)
--	Get, O(_1+n/k_)
--	Contains, O(_1_)
--	Remove, O(_1+n/k_)
+Operation | Time
+--- | ---
+Add | O(_1_)
+Get | O(_1+n/k_)
+Contains | O(_1_)
+Remove | O(_1+n/k_)
 
 __Adjacency List__
 
@@ -199,8 +195,8 @@ collection object that lists the neighboring edge objects. Each edge object poin
 endpoints. This version uses more memory, but the existence of edge objects allows it extra flexibility in storing 
 additional information about edges.
 
-Common operations:
-
--	Get-neighbors, O(_v+e_)
--	Breadth-first-search
--	Depth-first-search
+Operation | Time
+--- | ---
+Get-neighbors | O(_v+e_)
+Breadth-first-search |
+Depth-first-search |
