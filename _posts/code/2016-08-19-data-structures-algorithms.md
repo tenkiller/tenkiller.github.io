@@ -158,7 +158,7 @@ Min/Max | O(_log n_)
 In-order | O(_n_)
 Pre-order | O(_n_)
 Post-order | O(_n_)
- 
+
 __Rolling Hash__
 
 A rolling hash is a hash function where the input is hashed in a window that moves through the input. As the window 
